@@ -1,109 +1,126 @@
-import timeit
+import time
+from function import *
+from random import randint
 
-code1 = '''def bubble(array):
-    iterations = len(array) - 1
-    for i in range(iterations):
-        for j in range(iterations-i):
-            if array[j] > array[j+1]:
-                array[j], array[j+1] = array[j+1], array[j]
-'''
-
-print(timeit.timeit(code1, number=100))
-print(timeit.timeit(code1, number=1000))
-print(timeit.timeit(code1, number=10000))
-print(timeit.timeit(code1, number=100000))
-print(timeit.timeit(code1, number=100000000))
+s0 =[randint(-1000, 1000) for i in range(10)]
+s1 = [randint(-1000, 1000) for i in range(100)]
+s2 = [randint(-1000, 1000) for i in range(1000)]
+s3 = [randint(-1000, 1000) for i in range(10000)]
+t0 = t1 = t2 = t3 = 0
 
 
-code2 = '''def sel_sort(row):
-    n = len(row)
-    for i in range(n-1):
-        m = i
-        for j in range(i+1, n):
-            if row[j] < row[m]:
-                m = j
-        row[i], row[m] = row[m], row[i]'''
-
-print(timeit.timeit(code2, number=100))
-print(timeit.timeit(code2, number=1000))
-print(timeit.timeit(code2, number=10000))
-print(timeit.timeit(code2, number=100000))
-print(timeit.timeit(code2, number=100000000))
 
 
-code3 = '''def insertion_sort(alist):
-    for i in range(1, len(alist)):
-        temp = alist[i]
-        j = i - 1
-        while (j >= 0 and temp < alist[j]):
-            alist[j + 1] = alist[j]
-            j = j - 1
-        alist[j + 1] = temp'''
+# for i in range(1):
+#     bub0 = time.time()
+#     bubble(s0[::])
+#     bub1 = time.time()
+#     bubble(s1[::])
+#     bub2 = time.time()
+#     bubble(s2[::])
+#     bub3 = time.time()
+#     bubble(s3[::])
+#     bub4 = time.time()
+#     t0 += (bub1 - bub0) * 1000
+#     t1 +=(bub2 - bub1) * 1000
+#     t2 +=(bub3 - bub2) * 1000
+#     t3 += (bub4 - bub3) * 1000
+#
+#
+# print(t0)
+# print(t1)
+# print(t2)
+# print(t3)
+#
+#
+#
+# for i in range(1):
+#     bub0 = time.time()
+#     sel_sort(s0[::])
+#     bub1 = time.time()
+#     sel_sort(s1[::])
+#     bub2 = time.time()
+#     sel_sort(s2[::])
+#     bub3 = time.time()
+#     sel_sort(s3[::])
+#     bub4 = time.time()
+#     t0 += (bub1 - bub0) * 1000
+#     t1 +=(bub2 - bub1) * 1000
+#     t2 +=(bub3 - bub2) * 1000
+#     t3 += (bub4 - bub3) * 1000
+#
+# print(t0)
+# print(t1)
+# print(t2)
+# print(t3)
+#
+#
+#
+#
+#
+# for i in range(1):
+#     bub0 = time.time()
+#     insertion_sort(s0[::])
+#     bub1 = time.time()
+#     insertion_sort(s1[::])
+#     bub2 = time.time()
+#     insertion_sort(s2[::])
+#     bub3 = time.time()
+#     insertion_sort(s3[::])
+#     bub4 = time.time()
+#     t0 += (bub1 - bub0) * 1000
+#     t1 +=(bub2 - bub1) * 1000
+#     t2 +=(bub3 - bub2) * 1000
+#     t3 += (bub4 - bub3) * 1000
+#
+# print(t0)
+# print(t1)
+# print(t2)
+# print(t3)
+#
+#
+#
+#
+# for i in range(1):
+#     bub0 = time.time()
+#     quicksort(s0[::])
+#     bub1 = time.time()
+#     quicksort(s1[::])
+#     bub2 = time.time()
+#     quicksort(s2[::])
+#     bub3 = time.time()
+#     quicksort(s3[::])
+#     bub4 = time.time()
+#     t0 += (bub1 - bub0) * 1000
+#     t1 +=(bub2 - bub1) * 1000
+#     t2 +=(bub3 - bub2) * 1000
+#     t3 += (bub4 - bub3) * 1000
+#
+# print(t0)
+# print(t1)
+# print(t2)
+# print(t3)
 
-print(timeit.timeit(code3, number=100))
-print(timeit.timeit(code3, number=1000))
-print(timeit.timeit(code3, number=10000))
-print(timeit.timeit(code3, number=100000))
-print(timeit.timeit(code3, number=100000000))
-
-code4 = '''def quicksort(nums):
-   if len(nums) <= 1:
-       return nums
-   else:
-       q = random.choice(nums)
-       s_nums = []
-       m_nums = []
-       e_nums = []
-       for n in nums:
-           if n < q:
-               s_nums.append(n)
-           elif n > q:
-               m_nums.append(n)
-           else:
-               e_nums.append(n)
-       return quicksort(s_nums) + e_nums + quicksort(m_nums)'''
-
-print(timeit.timeit(code4, number=100))
-print(timeit.timeit(code4, number=1000))
-print(timeit.timeit(code4, number=10000))
-print(timeit.timeit(code4, number=100000))
-print(timeit.timeit(code4, number=100000000))
 
 
-code5 = '''def merge_sort(arr):
-    if len(arr) > 1:
-        mid = len(arr) // 2 
-        left_half = arr[:mid] 
-        right_half = arr[mid:]
-
-        merge_sort(left_half)  
-        merge_sort(right_half)
-
-        i = j = k = 0
-
-        while i < len(left_half) and j < len(right_half):
-            if left_half[i] < right_half[j]:
-                arr[k] = left_half[i]
-                i += 1
-            else:
-                arr[k] = right_half[j]
-                j += 1
-            k += 1
-
-        while i < len(left_half):
-            arr[k] = left_half[i]
-            i += 1
-            k += 1
-
-        while j < len(right_half):
-            arr[k] = right_half[j]
-            j += 1
-            k += 1
-    return arr'''
 
 
-print(timeit.timeit(code5, number=100))
-print(timeit.timeit(code5, number=1000))
-print(timeit.timeit(code5, number=10000))
-print(timeit.timeit(code5, number=100000))
-print(timeit.timeit(code5, number=100000000))
+for i in range(1):
+    bub0 = time.time()
+    merge_sort(s0[::])
+    bub1 = time.time()
+    merge_sort(s1[::])
+    bub2 = time.time()
+    merge_sort(s2[::])
+    bub3 = time.time()
+    merge_sort(s3[::])
+    bub4 = time.time()
+    t0 += (bub1 - bub0) * 1000
+    t1 +=(bub2 - bub1) * 1000
+    t2 +=(bub3 - bub2) * 1000
+    t3 += (bub4 - bub3) * 1000
+
+print(t0)
+print(t1)
+print(t2)
+print(t3)
